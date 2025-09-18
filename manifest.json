@@ -1,24 +1,17 @@
 {
   "manifest_version": 3,
   "name": "Copy Link Under Cursor",
-  "version": "1.0",
-  "description": "Copy link under cursor by Option+C",
-  "permissions": ["scripting", "activeTab", "clipboardWrite"],
-  "background": {
-    "service_worker": "background.js"
-  },
+  "version": "1.1",
+  "description": "Copy hovered link with Option+C",
+  "permissions": ["activeTab", "clipboardWrite"],
+  "background": { "service_worker": "background.js" },
   "commands": {
     "copy-hover-link": {
-      "suggested_key": {
-        "default": "Alt+C"
-      },
+      "suggested_key": { "default": "Alt+C" },
       "description": "Copy hovered link"
     }
   },
   "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
+    { "matches": ["<all_urls>"], "js": ["content.js"] }
   ]
 }

@@ -1,13 +1,11 @@
 chrome.commands.onCommand.addListener(async command => {
     if (command !== 'copy-hover-link') return;
 
-    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-    if (!tab) return;
+    const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+    if (!tab?.id) return;
 
-    chrome.tabs.sendMessage(tab.id, 'getLink', async link => {
+    chrome.tabs.sendMessage(tab.id, 'getLink', link => {
         if (!link) return;
-        try {
-            await navigator.clipboard.writeText(link);
-        } catch (_) { /* no output */ }
+        chrome.tabs.sendMessage(tab.id, {type:'copyText', text: link});
     });
 });
