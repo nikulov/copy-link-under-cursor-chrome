@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Copy Link Under Cursor",
   "version": "1.0",
-  "description": "Копирует ссылку под курсором по Option+C",
+  "description": "Copy link under cursor by Option+C",
   "permissions": ["scripting", "activeTab", "clipboardWrite"],
   "background": {
     "service_worker": "background.js"
